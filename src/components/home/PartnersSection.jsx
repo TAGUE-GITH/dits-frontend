@@ -11,8 +11,9 @@ export default function PartnersSection() {
     <section className="section">
       <div className="container">
         <SectionTitle
-          tag="Ils nous font confiance"
+          tag="Écosystème"
           title="Nos partenaires"
+          text="Des acteurs de confiance avec qui nous construisons des solutions durables."
         />
         <div className="partners-grid">
           {data.map((partner) => {

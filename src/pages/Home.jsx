@@ -1,5 +1,6 @@
 import Hero from "../components/home/Hero";
-import Features from "../components/home/Features";
+import About from "../components/home/About";
+import Expertise from "../components/home/Expertise";
 import ServicesSection from "../components/home/ServicesSection";
 import ArticlesSection from "../components/home/ArticlesSection";
 import PartnersSection from "../components/home/PartnersSection";
@@ -10,7 +11,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Features />
+      <About />
+      <Expertise />
       <ServicesSection />
       <ArticlesSection />
       <PartnersSection />
