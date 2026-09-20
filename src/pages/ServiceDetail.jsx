@@ -13,7 +13,7 @@ export default function ServiceDetail() {
   const fetcher = useCallback(() => getServiceById(id), [id]);
   const { data: service, loading, error } = useFetch(fetcher);
 
-  const title = service?.title || service?.name || "Service";
+  const title = service?.title || "Service";
 
   return (
     <>
@@ -26,12 +26,14 @@ export default function ServiceDetail() {
           <DataState loading={loading} error={error} empty={!service}>
             <div className="detail">
               <article>
-                <span className="detail-icon">
-                  <FiLayers />
-                </span>
-                <div className="detail-content">
-                  {service?.content || service?.description}
-                </div>
+                {service?.imageUrl ? (
+                  <img className="article-cover" src={service.imageUrl} alt={title} />
+                ) : (
+                  <span className="detail-icon">
+                    <FiLayers />
+                  </span>
+                )}
+                <div className="detail-content">{service?.description}</div>
               </article>
 
               <aside className="detail-aside">

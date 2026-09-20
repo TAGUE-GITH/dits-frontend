@@ -6,6 +6,9 @@ import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
 import Articles from "./pages/Articles";
 import ArticleDetail from "./pages/ArticleDetail";
+import Partners from "./pages/Partners";
+import Careers from "./pages/Careers";
+import JobDetail from "./pages/JobDetail";
 import NotFound from "./pages/NotFound";
 import Account from "./pages/Account";
 import Admin from "./pages/Admin";
@@ -29,6 +32,9 @@ export default function App() {
         <Route path="/services/:id" element={<ServiceDetail />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:id" element={<ArticleDetail />} />
+        <Route path="/partenaires" element={<Partners />} />
+        <Route path="/carrieres" element={<Careers />} />
+        <Route path="/carrieres/:id" element={<JobDetail />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/mon-espace" element={<Account />} />

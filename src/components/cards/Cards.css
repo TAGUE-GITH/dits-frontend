@@ -86,3 +86,10 @@
 .article-body h3 {
   font-size: 1.15rem;
 }
+
+.service-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 12px;
+}

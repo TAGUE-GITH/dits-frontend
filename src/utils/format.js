@@ -1,3 +1,14 @@
+const contractLabels = {
+  STAGE: "Stage",
+  ALTERNANCE: "Alternance",
+  CDD: "CDD",
+  CDI: "CDI",
+  FREELANCE: "Freelance",
+  AUTRE: "Autre",
+};
+
+export const contractLabel = (value) => contractLabels[value] || value || "";
+
 export const formatDate = (value) =>
   value
     ? new Date(value).toLocaleDateString("fr-FR", {
