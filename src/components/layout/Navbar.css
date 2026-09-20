@@ -62,7 +62,7 @@
 .menu {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.2rem;
 }
 
 .menu ul {
@@ -72,7 +72,7 @@
 
 .menu li a {
   display: block;
-  padding: 0.5rem 0.9rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 999px;
   font-weight: 500;
   transition: var(--transition);
@@ -94,7 +94,7 @@
 }
 
 .menu-actions .btn {
-  padding: 0.6rem 1.2rem;
+  padding: 0.6rem 1rem;
   font-size: 0.88rem;
 }
 
@@ -102,7 +102,7 @@
   display: none;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1180px) {
   .burger {
     position: relative;
     z-index: 1002;

@@ -4,6 +4,8 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import ServiceDetail from "./pages/ServiceDetail";
+import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
 import Articles from "./pages/Articles";
 import ArticleDetail from "./pages/ArticleDetail";
 import Partners from "./pages/Partners";
@@ -32,6 +34,8 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:id" element={<ServiceDetail />} />
+        <Route path="/realisations" element={<Projects />} />
+        <Route path="/realisations/:id" element={<ProjectDetail />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:id" element={<ArticleDetail />} />
         <Route path="/partenaires" element={<Partners />} />

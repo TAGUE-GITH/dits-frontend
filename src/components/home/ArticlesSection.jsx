@@ -10,7 +10,7 @@ export default function ArticlesSection() {
   const articles = (data || []).slice(0, 3);
 
   return (
-    <section className="section section-alt">
+    <section className="section">
       <div className="container">
         <SectionTitle
           tag="Actualités"

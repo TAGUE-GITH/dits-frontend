@@ -73,7 +73,7 @@ export default function Navbar() {
                   Connexion
                 </Button>
                 <Button to="/inscription" onClick={close}>
-                  Créer un compte
+                 S'inscrire
                 </Button>
               </>
             )}

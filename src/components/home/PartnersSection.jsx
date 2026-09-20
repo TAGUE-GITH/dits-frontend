@@ -8,7 +8,7 @@ export default function PartnersSection() {
   if (loading || error || !data?.length) return null;
 
   return (
-    <section className="section">
+    <section className="section section-alt">
       <div className="container">
         <SectionTitle
           tag="Écosystème"

@@ -20,3 +20,12 @@ export const formatDate = (value) =>
 
 export const excerpt = (text = "", max = 120) =>
   text.length > max ? `${text.slice(0, max).trim()}…` : text;
+
+export const splitTags = (value) =>
+  (value || "")
+    .split(/[,;\n]/)
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+
+export const sortByDateDesc = (items = [], key) =>
+  [...items].sort((a, b) => new Date(b[key] || 0) - new Date(a[key] || 0));
