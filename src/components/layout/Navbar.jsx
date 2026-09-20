@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { navLinks } from "../../data/navigation";
+import { useAuth } from "../../context/authContext";
 import Button from "../ui/Button";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { isAuthenticated, isAdmin, logout } = useAuth();
 
   const close = () => setOpen(false);
+
+  const handleLogout = () => {
+    logout();
+    close();
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -49,12 +56,27 @@ export default function Navbar() {
           </ul>
 
           <div className="menu-actions">
-            <Button to="/connexion" variant="outline" onClick={close}>
-              Connexion
-            </Button>
-            <Button to="/contact" onClick={close}>
-              Devis gratuit
-            </Button>
+            {isAuthenticated ? (
+              <>
+                <Button
+                  to={isAdmin ? "/admin" : "/mon-espace"}
+                  variant="outline"
+                  onClick={close}
+                >
+                  {isAdmin ? "Administration" : "Mon espace"}
+                </Button>
+                <Button onClick={handleLogout}>Déconnexion</Button>
+              </>
+            ) : (
+              <>
+                <Button to="/connexion" variant="outline" onClick={close}>
+                  Connexion
+                </Button>
+                <Button to="/inscription" onClick={close}>
+                  Créer un compte
+                </Button>
+              </>
+            )}
           </div>
         </nav>
 
