@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function useFetch(fetcher) {
   const [state, setState] = useState({ data: null, loading: true, error: "" });
+  const [version, setVersion] = useState(0);
 
   useEffect(() => {
     let active = true;
+
+    setState((previous) => ({ ...previous, loading: true, error: "" }));
 
     fetcher()
       .then((data) => active && setState({ data, loading: false, error: "" }))
@@ -16,7 +19,9 @@ export default function useFetch(fetcher) {
     return () => {
       active = false;
     };
-  }, [fetcher]);
+  }, [fetcher, version]);
 
-  return state;
+  const reload = useCallback(() => setVersion((current) => current + 1), []);
+
+  return { ...state, reload };
 }

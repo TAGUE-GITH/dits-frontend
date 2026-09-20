@@ -1,11 +1,21 @@
 import { request } from "./http";
 
-export const login = (email, password) =>
-  request("/auth/login", {
-    method: "POST",
-    body: { email, password },
-    fallback: "Email ou mot de passe incorrect",
-  });
+export const login = async (email, password) => {
+  try {
+    return await request("/auth/login", {
+      method: "POST",
+      body: { email, password },
+      fallback: "Email ou mot de passe incorrect",
+    });
+  } catch (error) {
+    if (error.status === 403) {
+      throw new Error(
+        "Votre compte est en attente de validation ou a été désactivé."
+      );
+    }
+    throw error;
+  }
+};
 
 export const register = (userData) =>
   request("/auth/register", {

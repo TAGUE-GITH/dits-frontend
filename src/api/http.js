@@ -23,6 +23,12 @@ const extractMessage = (data, fallback) => {
   return fallback;
 };
 
+const createError = (data, status, fallback) => {
+  const error = new Error(extractMessage(data, fallback));
+  error.status = status;
+  return error;
+};
+
 export const query = (params = {}) => {
   const search = new URLSearchParams();
   Object.entries(params).forEach(([key, value]) => {
@@ -52,7 +58,7 @@ export const request = async (
 
   const data = await parse(response);
 
-  if (!response.ok) throw new Error(extractMessage(data, fallback));
+  if (!response.ok) throw createError(data, response.status, fallback);
 
   return data;
 };
@@ -64,7 +70,7 @@ export const download = async (path, fileName = "document") => {
 
   if (!response.ok) {
     const data = await parse(response);
-    throw new Error(extractMessage(data, "Impossible de télécharger le fichier."));
+    throw createError(data, response.status, "Impossible de télécharger le fichier.");
   }
 
   const blob = await response.blob();

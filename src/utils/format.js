@@ -29,3 +29,10 @@ export const splitTags = (value) =>
 
 export const sortByDateDesc = (items = [], key) =>
   [...items].sort((a, b) => new Date(b[key] || 0) - new Date(a[key] || 0));
+
+export const formatSize = (bytes) => {
+  if (!bytes) return "";
+  if (bytes < 1024) return `${bytes} o`;
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} Ko`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} Mo`;
+};
