@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
+import { FiArrowLeft, FiUser } from "react-icons/fi";
 import { getArticleById } from "../api/articleApi";
 import useFetch from "../hooks/useFetch";
 import { formatDate } from "../utils/format";
@@ -13,8 +13,7 @@ export default function ArticleDetail() {
   const fetcher = useCallback(() => getArticleById(id), [id]);
   const { data: article, loading, error } = useFetch(fetcher);
 
-  const image = article?.imageUrl || article?.image;
-  const date = article?.publishedAt || article?.createdAt;
+  const date = article?.publicationDate || article?.createdAt;
 
   return (
     <>
@@ -26,12 +25,22 @@ export default function ArticleDetail() {
         <div className="container article-page">
           <DataState loading={loading} error={error} empty={!article}>
             <article>
-              {image && (
-                <img className="article-cover" src={image} alt={article?.title} />
+              {article?.imageUrl && (
+                <img
+                  className="article-cover"
+                  src={article.imageUrl}
+                  alt={article.title}
+                />
               )}
-              {date && (
-                <span className="badge article-meta">{formatDate(date)}</span>
-              )}
+              <div className="article-meta-row">
+                {date && <span className="badge">{formatDate(date)}</span>}
+                {article?.author && (
+                  <span className="article-author">
+                    <FiUser /> {article.author}
+                  </span>
+                )}
+              </div>
+              <p className="article-summary">{article?.summary}</p>
               <div className="detail-content">{article?.content}</div>
             </article>
             <Link to="/articles" className="back-link" style={{ marginTop: "2rem" }}>

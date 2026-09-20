@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { navLinks } from "../../data/navigation";
+import { company } from "../../data/company";
+import NewsletterForm from "./NewsletterForm";
 import "./Footer.css";
 
 const accountLinks = [
@@ -20,14 +22,24 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="footer">
+      <div className="container">
+        <div className="footer-newsletter">
+          <div>
+            <h3>Restez informé</h3>
+            <p>Recevez nos actualités et conseils directement par email.</p>
+          </div>
+          <NewsletterForm />
+        </div>
+      </div>
+
       <div className="container footer-grid">
         <div className="footer-brand">
           <Link to="/" className="footer-logo">
             DITS<em>Group</em>
           </Link>
           <p>
-            Digital IT Solutions : des solutions numériques fiables et
-            modernes pour accompagner la croissance de votre entreprise.
+            Conseil et expertise en systèmes d'information : conception et
+            administration de bases de données, sur le cloud et en on-premise.
           </p>
           <div className="footer-socials">
             {socials.map(({ icon: Icon, href, label }) => (
@@ -64,13 +76,13 @@ export default function Footer() {
           <h4>Contact</h4>
           <ul className="footer-contact">
             <li>
-              <FiMail /> contact@ditsgroup.com
+              <FiMail /> {company.email}
             </li>
             <li>
-              <FiPhone /> +33 1 00 00 00 00
+              <FiPhone /> {company.phone}
             </li>
             <li>
-              <FiMapPin /> Paris, France
+              <FiMapPin /> {company.address}
             </li>
           </ul>
         </div>
@@ -78,7 +90,9 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="container">
-          <p>© {new Date().getFullYear()} DITS Group. Tous droits réservés.</p>
+          <p>
+            © {new Date().getFullYear()} {company.name}. Tous droits réservés.
+          </p>
         </div>
       </div>
     </footer>

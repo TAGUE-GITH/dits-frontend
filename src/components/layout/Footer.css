@@ -103,3 +103,22 @@
     grid-template-columns: 1fr;
   }
 }
+
+.footer-newsletter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-newsletter h3 {
+  margin-bottom: 0.2rem;
+  color: #fff;
+  font-size: 1.3rem;
+}

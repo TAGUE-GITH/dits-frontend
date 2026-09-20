@@ -9,6 +9,8 @@ import ArticleDetail from "./pages/ArticleDetail";
 import Partners from "./pages/Partners";
 import Careers from "./pages/Careers";
 import JobDetail from "./pages/JobDetail";
+import Contact from "./pages/Contact";
+import Unsubscribe from "./pages/Unsubscribe";
 import NotFound from "./pages/NotFound";
 import Account from "./pages/Account";
 import Admin from "./pages/Admin";
@@ -35,6 +37,8 @@ export default function App() {
         <Route path="/partenaires" element={<Partners />} />
         <Route path="/carrieres" element={<Careers />} />
         <Route path="/carrieres/:id" element={<JobDetail />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/newsletter/desabonnement" element={<Unsubscribe />} />
 
         <Route element={<ProtectedRoute />}>
           <Route path="/mon-espace" element={<Account />} />
